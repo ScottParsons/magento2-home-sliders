@@ -1,0 +1,52 @@
+<?php
+/*
+ * Turiknox_Homesliders
+
+ * @category   Turiknox
+ * @package    Turiknox_Homesliders
+ * @copyright  Copyright (c) 2017 Turiknox
+ * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+?>
+<?php if ($block->isEnabled()): ?>
+    <?php $_sliders = $block->getSlidersCollection(); ?>
+    <?php if ($_sliders->count() > 0): ?>
+        <div class="flexslider">
+            <ul class="slides">
+                <?php foreach ($_sliders as $_slider): ?>
+                    <li>
+                        <?php if ($_slider->getUrl()): ?>
+                        <a href="<?php echo $block->escapeUrl($_slider->getUrl()); ?>" <?php if ($block->getLinkTarget()): ?> target="_blank" <?php endif; ?>>
+                            <?php endif; ?>
+                            <?php if ($image = $block->getImageUrl($_slider->getImage())): ?>
+                                <img src="<?php echo $image; ?>" alt="<?php echo $block->escapeHtml($_slider->getImageLabel()); ?>" />
+                            <?php endif; ?>
+                            <?php if ($_slider->getUrl()): ?>
+                        </a>
+                    <?php endif; ?>
+                        <?php if ($_slider->getHtml()): ?>
+                            <div class="html"><?php echo $_slider->getHtml() ?></div>
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            require([
+                'jquery','flexslider'
+            ],function($){
+                $(window).load(function() {
+                    $('.flexslider').flexslider({
+                        animation: 'slide',
+                        slideshow: <?php echo $block->getSlideshow() ? 'true' : 'false'; ?>,
+                        slideshowSpeed: <?php echo $block->getSlideshowSpeed(); ?>,
+                        directionNav: <?php echo $block->getDirectionNav() ? 'true' : 'false'; ?>,
+                        controlNav: <?php echo $block->getControlNav() ? 'true' : 'false'; ?>,
+                        pauseOnHover: <?php echo $block->getPauseOnHover() ? 'true' : 'false'; ?>
+                    });
+                });
+            });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

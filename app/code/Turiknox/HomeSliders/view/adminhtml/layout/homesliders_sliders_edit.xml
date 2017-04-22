@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Turiknox_Homesliders
+
+ * @category   Turiknox
+ * @package    Turiknox_Homesliders
+ * @copyright  Copyright (c) 2017 Turiknox
+ * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="homesliders_sliders_form" />
+        </referenceContainer>
+    </body>
+</page>

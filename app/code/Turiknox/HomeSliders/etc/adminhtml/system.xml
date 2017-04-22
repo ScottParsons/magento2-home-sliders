@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Turiknox_Homesliders
+
+ * @category   Turiknox
+ * @package    Turiknox_Homesliders
+ * @copyright  Copyright (c) 2017 Turiknox
+ * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="turiknox" sortOrder="1000">
+            <label>Turiknox</label>
+        </tab>
+        <section id="homesliders" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Home Sliders</label>
+            <tab>turiknox</tab>
+            <resource>Turiknox_HomeSliders::config</resource>
+            <group id="general" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="slider" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Slider Options</label>
+                <field id="automate" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Automate Slider</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="speed" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Slider Speed</label>
+                    <validate>validate-number</validate>
+                </field>
+                <field id="direction" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Previous/Next Arrows</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="paging" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show Slider Pagination</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="pause" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Pause Slider On Hover</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="link" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Open URLs In New Tab Or Window</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * Turiknox_Homesliders
+
+ * @category   Turiknox
+ * @package    Turiknox_Homesliders
+ * @copyright  Copyright (c) 2017 Turiknox
+ * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
+ * @version    1.0.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Turiknox_HomeSliders::sliders" title="Home Sliders" translate="title" module="Turiknox_HomeSliders"
+             sortOrder="60" parent="Magento_Backend::content_elements" action="homesliders/sliders" resource="Turiknox_HomeSliders::sliders" />
+    </menu>
+</config>
