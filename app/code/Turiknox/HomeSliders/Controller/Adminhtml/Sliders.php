@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Controller\Adminhtml;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Controller\Adminhtml;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Controller\Adminhtml;
+
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Registry;
@@ -28,28 +29,28 @@ abstract class Sliders extends Action
      *
      * @var SlidersRepositoryInterface
      */
-    protected $_sliderRepository;
+    protected $sliderRepository;
 
     /**
      * Core registry
      *
      * @var Registry
      */
-    protected $_coreRegistry;
+    protected $coreRegistry;
 
     /**
      * Result Page Factory
      *
      * @var PageFactory
      */
-    protected $_resultPageFactory;
+    protected $resultPageFactory;
 
     /**
      * Date filter
      *
      * @var Date
      */
-    protected $_dateFilter;
+    protected $dateFilter;
 
     /**
      * Sliders constructor.
@@ -66,12 +67,11 @@ abstract class Sliders extends Action
         PageFactory $resultPageFactory,
         Date $dateFilter,
         Context $context
-
     ) {
-        $this->_coreRegistry         = $registry;
-        $this->_sliderRepository     = $dataRepository;
-        $this->_resultPageFactory    = $resultPageFactory;
-        $this->_dateFilter = $dateFilter;
+        $this->coreRegistry         = $registry;
+        $this->sliderRepository     = $dataRepository;
+        $this->resultPageFactory    = $resultPageFactory;
+        $this->dateFilter = $dateFilter;
         parent::__construct($context);
     }
 }

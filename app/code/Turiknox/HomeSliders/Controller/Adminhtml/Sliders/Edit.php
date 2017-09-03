@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
+
 use Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
 
 class Edit extends Sliders
@@ -19,7 +20,7 @@ class Edit extends Sliders
     public function execute()
     {
         $sliderId = $this->getRequest()->getParam('slider_id');
-        $resultPage = $this->_resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Turiknox_HomeSliders::sliders')
             ->addBreadcrumb(__('Sliders'), __('Sliders'))
             ->addBreadcrumb(__('Manage Sliders'), __('Manage Sliders'));
@@ -30,7 +31,7 @@ class Edit extends Sliders
         } else {
             $resultPage->addBreadcrumb(__('Edit Slider'), __('Edit Slider'));
             $resultPage->getConfig()->getTitle()->prepend(
-                $this->_sliderRepository->getById($sliderId)->getTitle()
+                $this->sliderRepository->getById($sliderId)->getTitle()
             );
         }
         return $resultPage;

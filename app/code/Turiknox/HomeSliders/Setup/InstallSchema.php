@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Setup;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Setup;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Setup;
+
 use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;

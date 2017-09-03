@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Model\ResourceModel\Sliders;
 /*
  * Turiknox_Homesliders
 
@@ -9,12 +8,15 @@ namespace Turiknox\HomeSliders\Model\ResourceModel\Sliders;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Model\ResourceModel\Sliders;
+
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Collection extends AbstractCollection
 {
     /**
      * @var string
+     * @codingStandardsIgnoreStart
      */
     protected $_idFieldName = 'slider_id';
 
@@ -23,6 +25,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init('Turiknox\HomeSliders\Model\Sliders','Turiknox\HomeSliders\Model\ResourceModel\Sliders');
+        // @codingStandardsIgnoreEnd
+        $this->_init('Turiknox\HomeSliders\Model\Sliders', 'Turiknox\HomeSliders\Model\ResourceModel\Sliders');
     }
 }

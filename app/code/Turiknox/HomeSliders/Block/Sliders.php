@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Block;
 /*
  * Turiknox_Homesliders
 
@@ -9,7 +8,8 @@ namespace Turiknox\HomeSliders\Block;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
-use Magento\Framework\App\Config\ScopeConfigInterface;
+namespace Turiknox\HomeSliders\Block;
+
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Store\Model\ScopeInterface;
@@ -27,40 +27,32 @@ class Sliders extends Template
     const XML_PATH_SLIDERS_LINK      = 'homesliders/general/link';
 
     /**
-     * @var ScopeConfigInterface
-     */
-    protected $_scopeConfig;
-
-    /**
      * @var SlidersFactory
      */
-    protected $_slidersFactory;
+    protected $slidersFactory;
 
     /**
      * @var UploaderPool
      */
-    protected $_uploaderPool;
+    protected $uploaderPool;
 
     /**
      * Sliders constructor.
      *
      * @param Context $context
-     * @param ScopeConfigInterface $scopeConfig
      * @param SlidersFactory $slidersFactory
+     * @param UploaderPool $uploaderPool
      * @param array $data
      */
     public function __construct(
         Context $context,
-        ScopeConfigInterface $scopeConfig,
         SlidersFactory $slidersFactory,
         UploaderPool $uploaderPool,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
-        $this->_scopeConfig = $scopeConfig;
-        $this->_slidersFactory = $slidersFactory;
-        $this->_uploaderPool = $uploaderPool;
+        $this->slidersFactory = $slidersFactory;
+        $this->uploaderPool = $uploaderPool;
     }
 
     /**
@@ -140,7 +132,7 @@ class Sliders extends Template
      */
     public function getSlidersCollection()
     {
-        return $this->_slidersFactory->create()->getCollection()
+        return $this->slidersFactory->create()->getCollection()
             ->addFieldToFilter('is_enabled', 1)
             ->setOrder('sort_order', 'ASC');
     }
@@ -156,7 +148,7 @@ class Sliders extends Template
         $url = '';
         if ($image) {
             if (is_string($image)) {
-                $uploader = $this->_uploaderPool->getUploader('image');
+                $uploader = $this->uploaderPool->getUploader('image');
                 $url = $uploader->getBaseUrl().$uploader->getBasePath().$image;
             }
         }

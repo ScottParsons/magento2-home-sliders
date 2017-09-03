@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Model;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Model;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Model;
+
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filter\FilterManager;
@@ -18,8 +19,7 @@ use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Registry;
 use Turiknox\HomeSliders\Api\Data\SlidersInterface;
 
-class Sliders extends AbstractModel
-    implements SlidersInterface
+class Sliders extends AbstractModel implements SlidersInterface
 {
 
     /**
@@ -38,6 +38,11 @@ class Sliders extends AbstractModel
      * @var UploaderPool
      */
     protected $uploaderPool;
+
+    /**
+     * @var array
+     */
+    protected $optionProviders;
 
     /**
      * Sliders constructor.
@@ -59,8 +64,7 @@ class Sliders extends AbstractModel
         array $data = [],
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null
-    )
-    {
+    ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
         $this->uploaderPool    = $uploaderPool;
         $this->filter          = $filter;
@@ -70,9 +74,11 @@ class Sliders extends AbstractModel
 
     /**
      * Initialise resource model
+     * @codingStandardsIgnoreStart
      */
     protected function _construct()
     {
+        // @codingStandardsIgnoreEnd
         $this->_init('Turiknox\HomeSliders\Model\ResourceModel\Sliders');
     }
 

@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Block\Adminhtml\Sliders\Edit\Buttons;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Block\Adminhtml\Sliders\Edit\Buttons;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Block\Adminhtml\Sliders\Edit\Buttons;
+
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class SaveAndContinue extends Generic implements ButtonProviderInterface

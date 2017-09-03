@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Ui\Component\Listing\Column;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Ui\Component\Listing\Column;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Ui\Component\Listing\Column;
+
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
@@ -20,9 +21,9 @@ class Image extends Column
     const ALT_FIELD = 'image';
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var UrlInterface
      */
-    protected $storeManager;
+    protected $urlBuilder;
 
     /**
      * @var \Turiknox\HomeSliders\Model\Uploader
@@ -60,11 +61,11 @@ class Image extends Column
      */
     public function prepareDataSource(array $dataSource)
     {
-        if(isset($dataSource['data']['items'])) {
+        if (isset($dataSource['data']['items'])) {
             $fieldName = $this->getData('name');
-            foreach($dataSource['data']['items'] as & $item) {
+            foreach ($dataSource['data']['items'] as & $item) {
                 $url = '';
-                if($item[$fieldName] != '') {
+                if ($item[$fieldName] != '') {
                     $url = $this->imageModel->getBaseUrl().$this->imageModel->getBasePath().$item[$fieldName];
                 }
                 $item[$fieldName . '_src'] = $url;

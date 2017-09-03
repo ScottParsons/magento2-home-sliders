@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Model;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Model;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Model;
+
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Data\Collection\AbstractDb;
@@ -190,7 +191,7 @@ class Image extends AbstractModel
      * @param Uploader $uploader
      * @param Database $coreFileStorageDatabase
      * @param Filesystem $filesystem
-     * @param ImageFactory $imageFactory
+     * @param MagentoImageFactory $imageFactory
      * @param Repository $assetRepo
      * @param ViewFileSystem $viewFileSystem
      * @param ScopeConfigInterface $scopeConfig
@@ -216,7 +217,6 @@ class Image extends AbstractModel
         array $data = []
     ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
-
         $this->storeManager             = $storeManager;
         $this->uploader                 = $uploader;
         $this->coreFileStorageDatabase  = $coreFileStorageDatabase;
@@ -227,7 +227,6 @@ class Image extends AbstractModel
         $this->entityCode               = $entityCode;
         $this->mediaDirectory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
         $this->mediaDirectory->create($this->uploader->getBasePath());
-
     }
 
     /**
@@ -365,9 +364,7 @@ class Image extends AbstractModel
      */
     protected function checkMemory($file = null)
     {
-        return $this->getMemoryLimit() > $this->getMemoryUsage() + $this->getNeedMemoryForFile(
-                $file
-            )
+        return $this->getMemoryLimit() > $this->getMemoryUsage() + $this->getNeedMemoryForFile($file)
             || $this->getMemoryLimit() == -1;
     }
 
@@ -427,11 +424,9 @@ class Image extends AbstractModel
             return 0;
         }
         if (!isset($imageInfo['channels'])) {
-            // if there is no info about this parameter lets set it for maximum
             $imageInfo['channels'] = 4;
         }
         if (!isset($imageInfo['bits'])) {
-            // if there is no info about this parameter lets set it for maximum
             $imageInfo['bits'] = 8;
         }
         return round(
@@ -712,10 +707,9 @@ class Image extends AbstractModel
             );
         } else {
             $url = $this->storeManager->getStore()->getBaseUrl(
-                    UrlInterface::URL_TYPE_MEDIA
-                ) . $this->newFile;
+                UrlInterface::URL_TYPE_MEDIA
+            ) . $this->newFile;
         }
-
         return $url;
     }
 
@@ -738,7 +732,7 @@ class Image extends AbstractModel
     }
 
     /**
-     * @return bool|void
+     * @return bool
      */
     public function isCached()
     {
@@ -913,7 +907,6 @@ class Image extends AbstractModel
     {
         $directory = $this->uploader->getBasePath() . '/cache';
         $this->mediaDirectory->delete($directory);
-
         $this->coreFileStorageDatabase->deleteFolder($this->mediaDirectory->getAbsolutePath($directory));
     }
 

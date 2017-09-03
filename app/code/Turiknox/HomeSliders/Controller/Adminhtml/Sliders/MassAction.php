@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
 /*
  * Turiknox_Homesliders
 
@@ -9,8 +8,9 @@ namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
+
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\Model\View\Result\ForwardFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;
 use Magento\Framework\Stdlib\DateTime\Filter\Date;
@@ -26,22 +26,22 @@ abstract class MassAction extends Sliders
     /**
      * @var Filter
      */
-    protected $_filter;
+    protected $filter;
 
     /**
      * @var CollectionFactory
      */
-    protected $_collectionFactory;
+    protected $collectionFactory;
 
     /**
      * @var string
      */
-    protected $_successMessage;
+    protected $successMessage;
 
     /**
      * @var string
      */
-    protected $_errorMessage;
+    protected $errorMessage;
 
     /**
      * MassAction constructor.
@@ -68,36 +68,34 @@ abstract class MassAction extends Sliders
         $errorMessage
     ) {
         parent::__construct($registry, $slidersRepository, $resultPageFactory, $dateFilter, $context);
-        $this->_filter            = $filter;
-        $this->_collectionFactory = $collectionFactory;
-        $this->_successMessage    = $successMessage;
-        $this->_errorMessage      = $errorMessage;
+        $this->filter            = $filter;
+        $this->collectionFactory = $collectionFactory;
+        $this->successMessage    = $successMessage;
+        $this->errorMessage      = $errorMessage;
     }
 
     /**
      * @param SlidersModel $sliders
      * @return mixed
      */
-    protected abstract function massAction(SlidersModel $sliders);
+    abstract protected function massAction(SlidersModel $sliders);
 
     /**
-     * execute action
-     *
-     * @return \Magento\Backend\Model\View\Result\Redirect
+     * @return \Magento\Framework\Controller\Result\Redirect
      */
     public function execute()
     {
         try {
-            $collection = $this->_filter->getCollection($this->_collectionFactory->create());
+            $collection = $this->filter->getCollection($this->collectionFactory->create());
             $collectionSize = $collection->getSize();
             foreach ($collection as $slider) {
                 $this->massAction($slider);
             }
-            $this->messageManager->addSuccessMessage(__($this->_successMessage, $collectionSize));
+            $this->messageManager->addSuccessMessage(__($this->successMessage, $collectionSize));
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage($e->getMessage());
         } catch (\Exception $e) {
-            $this->messageManager->addExceptionMessage($e, __($this->_errorMessage));
+            $this->messageManager->addExceptionMessage($e, __($this->errorMessage));
         }
         $redirectResult = $this->resultRedirectFactory->create();
         $redirectResult->setPath('homesliders/sliders');

@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Ui\Component\Listing\Column;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Ui\Component\Listing\Column;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Ui\Component\Listing\Column;
+
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Framework\UrlInterface;
@@ -24,7 +25,7 @@ class SliderActions extends Column
      *
      * @var \Magento\Framework\UrlInterface
      */
-    protected $_urlBuilder;
+    protected $urlBuilder;
 
     /**
      * @param ContextInterface $context
@@ -39,10 +40,9 @@ class SliderActions extends Column
         UrlInterface $urlBuilder,
         array $components = [],
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $uiComponentFactory, $components, $data);
-        $this->_urlBuilder = $urlBuilder;
+        $this->urlBuilder = $urlBuilder;
     }
 
     /**
@@ -58,7 +58,7 @@ class SliderActions extends Column
                 if (isset($item['slider_id'])) {
                     $item[$this->getData('name')] = [
                         'edit' => [
-                            'href' => $this->_urlBuilder->getUrl(
+                            'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_EDIT,
                                 [
                                     'slider_id' => $item['slider_id']
@@ -67,7 +67,7 @@ class SliderActions extends Column
                             'label' => __('Edit')
                         ],
                         'delete' => [
-                            'href' => $this->_urlBuilder->getUrl(
+                            'href' => $this->urlBuilder->getUrl(
                                 static::URL_PATH_DELETE,
                                 [
                                     'slider_id' => $item['slider_id']

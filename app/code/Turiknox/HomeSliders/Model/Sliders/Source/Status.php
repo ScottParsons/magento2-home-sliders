@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Model\Sliders\Source;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Model\Sliders\Source;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Model\Sliders\Source;
+
 use Magento\Framework\Data\OptionSourceInterface;
 
 class Status implements OptionSourceInterface

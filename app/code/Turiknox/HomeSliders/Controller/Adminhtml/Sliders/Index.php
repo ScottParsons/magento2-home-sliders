@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
+
 use Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
 
 class Index extends Sliders
@@ -19,7 +20,7 @@ class Index extends Sliders
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-        $resultPage = $this->_resultPageFactory->create();
+        $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Turiknox_HomeSliders::sliders');
         $resultPage->getConfig()->getTitle()->prepend(__('Sliders'));
         $resultPage->addBreadcrumb(__('Sliders'), __('Sliders'));

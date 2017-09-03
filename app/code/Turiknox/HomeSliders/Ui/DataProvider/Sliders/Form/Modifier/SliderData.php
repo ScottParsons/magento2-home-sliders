@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Ui\DataProvider\Sliders\Form\Modifier;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Ui\DataProvider\Sliders\Form\Modifier;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Ui\DataProvider\Sliders\Form\Modifier;
+
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
 use Turiknox\HomeSliders\Model\ResourceModel\Sliders\CollectionFactory;
 

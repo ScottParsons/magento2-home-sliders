@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
+
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Message\Manager;
@@ -27,27 +28,27 @@ class Save extends Sliders
     /**
      * @var Manager
      */
-    protected $_messageManager;
+    protected $messageManager;
 
     /**
      * @var SlidersRepositoryInterface
      */
-    protected $_sliderRepository;
+    protected $sliderRepository;
 
     /**
      * @var SlidersInterfaceFactory
      */
-    protected $_sliderFactory;
+    protected $sliderFactory;
 
     /**
      * @var DataObjectHelper
      */
-    protected $_dataObjectHelper;
+    protected $dataObjectHelper;
 
     /**
      * @var UploaderPool
      */
-    protected $_uploaderPool;
+    protected $uploaderPool;
 
     /**
      * Save constructor.
@@ -72,14 +73,13 @@ class Save extends Sliders
         DataObjectHelper $dataObjectHelper,
         UploaderPool $uploaderPool,
         Context $context
-    )
-    {
+    ) {
         parent::__construct($registry, $sliderRepository, $resultPageFactory, $dateFilter, $context);
-        $this->_messageManager   = $messageManager;
-        $this->_sliderFactory      = $sliderFactory;
-        $this->_sliderRepository   = $sliderRepository;
-        $this->_dataObjectHelper  = $dataObjectHelper;
-        $this->_uploaderPool = $uploaderPool;
+        $this->messageManager   = $messageManager;
+        $this->sliderFactory      = $sliderFactory;
+        $this->sliderRepository   = $sliderRepository;
+        $this->dataObjectHelper  = $dataObjectHelper;
+        $this->uploaderPool = $uploaderPool;
     }
 
     /**
@@ -95,30 +95,30 @@ class Save extends Sliders
         if ($data) {
             $id = $this->getRequest()->getParam('slider_id');
             if ($id) {
-                $model = $this->_sliderRepository->getById($id);
+                $model = $this->sliderRepository->getById($id);
             } else {
                 unset($data['slider_id']);
-                $model = $this->_sliderFactory->create();
+                $model = $this->sliderFactory->create();
             }
 
             try {
                 $image = $this->getUploader('image')->uploadFileAndGetName('image', $data);
                 $data['image'] = $image;
 
-                $this->_dataObjectHelper->populateWithArray($model, $data, SlidersInterface::class);
-                $this->_sliderRepository->save($model);
-                $this->_messageManager->addSuccessMessage(__('You saved this slider.'));
+                $this->dataObjectHelper->populateWithArray($model, $data, SlidersInterface::class);
+                $this->sliderRepository->save($model);
+                $this->messageManager->addSuccessMessage(__('You saved this slider.'));
                 $this->_getSession()->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['slider_id' => $model->getId(), '_current' => true]);
                 }
                 return $resultRedirect->setPath('*/*/');
             } catch (\Magento\Framework\Exception\LocalizedException $e) {
-                $this->_messageManager->addErrorMessage($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\RuntimeException $e) {
-                $this->_messageManager->addErrorMessage($e->getMessage());
+                $this->messageManager->addErrorMessage($e->getMessage());
             } catch (\Exception $e) {
-                $this->_messageManager->addException($e, __('Something went wrong while saving the slider.'));
+                $this->messageManager->addException($e, __('Something went wrong while saving the slider.'));
             }
 
             $this->_getSession()->setFormData($data);
@@ -134,6 +134,6 @@ class Save extends Sliders
      */
     protected function getUploader($type)
     {
-        return $this->_uploaderPool->getUploader($type);
+        return $this->uploaderPool->getUploader($type);
     }
 }

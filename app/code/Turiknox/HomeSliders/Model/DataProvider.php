@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Model;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Model;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Model;
+
 use Magento\Ui\DataProvider\AbstractDataProvider;
 use Magento\Ui\DataProvider\Modifier\ModifierInterface;
 use Magento\Ui\DataProvider\Modifier\PoolInterface;
@@ -39,10 +40,10 @@ class DataProvider extends AbstractDataProvider
         array $meta = [],
         array $data = []
     ) {
+        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->collection   = $sliderCollectionFactory->create();
         $this->pool         = $pool;
-        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
-        $this->meta = $this->prepareMeta($this->meta);
+        $this->meta         = $this->prepareMeta($this->meta);
     }
 
     /**

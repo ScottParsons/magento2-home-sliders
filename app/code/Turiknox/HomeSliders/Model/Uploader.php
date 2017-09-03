@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Model;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Model;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Model;
+
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
@@ -92,14 +93,16 @@ class Uploader
     protected $allowedExtensions;
 
     /**
+     * Uploader constructor.
+     *
      * @param Database $coreFileStorageDatabase
      * @param Filesystem $filesystem
      * @param UploaderFactory $uploaderFactory
      * @param StoreManagerInterface $storeManager
      * @param LoggerInterface $logger
-     * @param array $allowedExtensions
      * @param $baseTmpPath
      * @param $basePath
+     * @param array $allowedExtensions
      */
     public function __construct(
         Database $coreFileStorageDatabase,
@@ -107,10 +110,9 @@ class Uploader
         UploaderFactory $uploaderFactory,
         StoreManagerInterface $storeManager,
         LoggerInterface $logger,
-        $allowedExtensions = [],
         $baseTmpPath,
-        $basePath
-
+        $basePath,
+        $allowedExtensions = []
     ) {
         $this->coreFileStorageDatabase  = $coreFileStorageDatabase;
         $this->mediaDirectory           = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
@@ -214,7 +216,6 @@ class Uploader
     {
         $baseTmpPath = $this->getBaseTmpPath();
         $basePath = $this->getBasePath();
-
         $baseFilePath = $this->getFilePath($basePath, $name);
         $baseTmpFilePath = $this->getFilePath($baseTmpPath, $name);
 
@@ -248,9 +249,7 @@ class Uploader
      * Checking file for save and save it to tmp dir
      *
      * @param string $fileId
-     *
      * @return string[]
-     *
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function saveFileToTmpDir($fileId)
@@ -287,7 +286,6 @@ class Uploader
                 );
             }
         }
-
         return $result;
     }
 

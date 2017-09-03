@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Model;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Model;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Model;
+
 use Magento\Framework\ObjectManagerInterface;
 
 class UploaderPool
@@ -17,6 +18,7 @@ class UploaderPool
      * @var ObjectManagerInterface
      */
     protected $objectManager;
+
     /**
      * @var array
      */
@@ -46,7 +48,6 @@ class UploaderPool
         }
         if (!is_object($this->uploaders[$type])) {
             $this->uploaders[$type] = $this->objectManager->create($this->uploaders[$type]);
-
         }
         $uploader = $this->uploaders[$type];
         if (!($uploader instanceof Uploader)) {

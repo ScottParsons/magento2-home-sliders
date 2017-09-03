@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
+
 use Turiknox\HomeSliders\Model\Sliders;
 
 class MassDisable extends MassAction
@@ -16,7 +17,7 @@ class MassDisable extends MassAction
     /**
      * @var bool
      */
-    protected $_isEnabled = false;
+    protected $isEnabled = false;
 
     /**
      * @param Sliders $slider
@@ -24,8 +25,8 @@ class MassDisable extends MassAction
      */
     protected function massAction(Sliders $slider)
     {
-        $slider->setIsEnabled($this->_isEnabled);
-        $this->_sliderRepository->save($slider);
+        $slider->setIsEnabled($this->isEnabled);
+        $this->sliderRepository->save($slider);
         return $this;
     }
 }

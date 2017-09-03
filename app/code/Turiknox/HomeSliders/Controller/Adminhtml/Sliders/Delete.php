@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
+
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
@@ -24,7 +25,7 @@ class Delete extends Sliders
         $sliderId = $this->getRequest()->getParam('slider_id');
         if ($sliderId) {
             try {
-                $this->_sliderRepository->deleteById($sliderId);
+                $this->sliderRepository->deleteById($sliderId);
                 $this->messageManager->addSuccessMessage(__('The slider has been deleted.'));
                 $resultRedirect->setPath('homesliders/sliders/index');
                 return $resultRedirect;

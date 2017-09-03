@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Block\Adminhtml\Sliders\Edit\Buttons;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Block\Adminhtml\Sliders\Edit\Buttons;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Block\Adminhtml\Sliders\Edit\Buttons;
+
 use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Turiknox\HomeSliders\Api\SlidersRepositoryInterface;

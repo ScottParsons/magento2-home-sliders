@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Api\Data;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Api\Data;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Api\Data;
+
 interface SlidersInterface
 {
     /**

@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Block\Adminhtml\Sliders\Edit\Buttons;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Block\Adminhtml\Sliders\Edit\Buttons;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Block\Adminhtml\Sliders\Edit\Buttons;
+
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class Delete extends Generic implements ButtonProviderInterface
@@ -26,8 +27,8 @@ class Delete extends Generic implements ButtonProviderInterface
                 'label' => __('Delete Slider'),
                 'class' => 'delete',
                 'on_click' => 'deleteConfirm(\'' . __(
-                        'Are you sure you want to do this?'
-                    ) . '\', \'' . $this->getDeleteUrl() . '\')',
+                    'Are you sure you want to do this?'
+                ) . '\', \'' . $this->getDeleteUrl() . '\')',
                 'sort_order' => 20,
             ];
         }

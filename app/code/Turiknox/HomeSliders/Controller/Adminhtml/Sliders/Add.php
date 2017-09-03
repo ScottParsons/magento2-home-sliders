@@ -1,5 +1,4 @@
 <?php
-namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
 /*
  * Turiknox_Homesliders
 
@@ -9,6 +8,8 @@ namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
  * @license    https://github.com/turiknox/magento2-home-sliders/blob/master/LICENSE.md
  * @version    1.0.0
  */
+namespace Turiknox\HomeSliders\Controller\Adminhtml\Sliders;
+
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\ForwardFactory;
@@ -18,7 +19,7 @@ class Add extends Action
     /**
      * @var ForwardFactory
      */
-    protected $_resultForwardFactory;
+    protected $resultForwardFactory;
 
     /**
      * Add constructor.
@@ -30,7 +31,7 @@ class Add extends Action
         Context $context,
         ForwardFactory $resultForwardFactory
     ) {
-        $this->_resultForwardFactory = $resultForwardFactory;
+        $this->resultForwardFactory = $resultForwardFactory;
         parent::__construct($context);
     }
 
@@ -39,7 +40,7 @@ class Add extends Action
      */
     public function execute()
     {
-        $resultForward = $this->_resultForwardFactory->create();
+        $resultForward = $this->resultForwardFactory->create();
         return $resultForward->forward('edit');
     }
 }
