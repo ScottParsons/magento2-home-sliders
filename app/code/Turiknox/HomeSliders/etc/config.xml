@@ -13,14 +13,14 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <homesliders>
-            <slider>
+            <general>
                 <automate>1</automate>
                 <speed>7000</speed>
                 <direction>1</direction>
                 <paging>1</paging>
                 <pause>1</pause>
                 <link>1</link>
-            </slider>
+            </general>
         </homesliders>
     </default>
 </config>
